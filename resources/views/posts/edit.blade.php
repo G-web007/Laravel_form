@@ -6,29 +6,26 @@
         <div class="mx-auto d-block col-md-6 mt-5">
             <div class="card">
                 <div class="card-body col-md-12">
-                    <form action="/posts/{{ $post->id }}" method="post">
+                    {!! Form::model($post, ['method'=>'PATCH', 'action'=>['App\Http\Controllers\PostController@update', $post->id]]) !!}
                         {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="PUT">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title:</label>
-                            <input type="text" class="form-control" value="{{ $post->title }}" name="title">
+                            {!! Form::label('title', 'Title:' ) !!}
+                            {!! Form::text('title', null, ['class'=>'form-control']) !!}
                         </div>
                         <div class="mb-3">
-                            <label for="content" class="form-label">Title:</label>
-                            <input type="text" class="form-control" value="{{ $post->content }}" name="content">
+                            {!! Form::label('content', 'Content:' ) !!}
+                            {!! Form::text('content', null, ['class'=>'form-control']) !!}
                         </div>
                         <div class="d-flex">
-                            <button type="submit" name="submit" class="btn btn-primary flex-fill m-1">Update</button>
+                            {!! Form::submit('Update Post', ['class'=>'btn btn-primary flex-fill']) !!}
                         </div>
-                    </form>
-                    <hr>
-                    <form action="/posts/{{ $post->id }}" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <div class="d-flex">
-                            <button type="submit" name="delete" class="btn btn-danger flex-fill m-1">Delete</button>
+                    {!! Form::close() !!}
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['App\Http\Controllers\PostController@destroy', $post->id]]) !!}
+                        {{ csrf_field() }}  
+                        <div class="d-flex mt-2">
+                            {!! Form::submit('Delete', ['class'=>'btn btn-danger flex-fill']) !!}
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
