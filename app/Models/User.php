@@ -17,6 +17,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public static function scopeLatest($query)
+    {
+        return $query->orderBy('id', 'desc')->get();
+    }
 
     public function posts()
     {
