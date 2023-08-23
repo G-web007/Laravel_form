@@ -12,6 +12,7 @@
                                     <th>#</th>
                                     <th>Title</th>
                                     <th>Content</th>
+                                    <th>Image</th>
                                     <th>Created At</th>
                                 </tr>
                             </thead>
@@ -21,6 +22,7 @@
                                     <td>{{ $post->id }}</td>
                                     <td><a class="text-decoration-none" href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></td>
                                     <td>{{ $post->content }}</td>
+                                    <td><img  class="rounded" src="{{ $post->path }}" height="50" alt=""></td>
                                     <td>{{ $post->created_at }}</td>
                                 </tr>
                             </tbody>

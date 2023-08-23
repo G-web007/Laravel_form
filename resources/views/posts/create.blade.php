@@ -15,7 +15,7 @@
             @endif
             <div class="card">
                 <div class="card-body col-md-12">
-                    {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\PostController@store']) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\PostController@store', 'files'=>true]) !!}
                         {{ csrf_field() }}
                         <div class="mb-3">
                             {!! Form::label('title', 'Title:' ) !!}
@@ -24,6 +24,9 @@
                         <div class="mb-3">
                             {!! Form::label('content', 'Content:' ) !!}
                             {!! Form::text('content', null, ['class'=>'form-control', 'placeholder'=>'Enter Content']) !!}
+                        </div>
+                        <div class="mb-3">
+                            {!! Form::file('file', ['class'=>'form-control']) !!}
                         </div>
                         <div class="d-flex">
                             {!! Form::submit('Create Post', ['class'=>'btn btn-primary flex-fill']) !!}

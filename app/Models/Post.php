@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    public $directory = "/images/";
     use HasFactory;
 
     protected $fillable = [
         'title',
         'content',
+        'path',
     ];
+
+    public function getPathAttribute($value)
+    {
+        return $this->directory . $value;
+    }
 }
